@@ -1,0 +1,8 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>FitBuddy Plan</title><link rel="stylesheet" href="/static/styles.css"></head>
+<body><header class="topbar"><a class="brand" href="/">FitBuddy</a><nav><a href="/">New plan</a><a href="/view-all-users">Admin</a></nav></header>
+<main class="container"><section class="summary"><div><p class="eyebrow">{{ 'UPDATED PLAN' if updated else 'PERSONALIZED PLAN' }}</p><h1>{{ user.name }}'s FitBuddy week</h1><p>{{ user.age }} years · {{ user.weight }} kg · {{ user.goal }} · {{ user.intensity }} intensity</p></div><span class="pill">{{ 'AI refined' if updated else 'AI generated' }}</span></section>
+<section class="panel"><h2>7-day workout plan</h2><pre>{{ plan.updated_plan if updated and plan.updated_plan else plan.original_plan }}</pre></section>
+<section class="panel tip"><h2>Nutrition / recovery tip</h2><p>{{ plan.updated_nutrition_tip if updated and plan.updated_nutrition_tip else plan.nutrition_tip }}</p></section>
+<section class="panel"><h2>Refine your plan</h2><p class="muted">Examples: “more focus on cardio”, “include another rest day”, or “reduce jumping exercises”.</p><form method="post" action="/submit-feedback"><input type="hidden" name="user_id" value="{{ user.user_id }}"><textarea name="feedback" maxlength="1000" placeholder="What would you like to change?" required></textarea><button type="submit">Update plan with AI →</button></form></section>
+<p class="fine">AI-generated wellness content is not medical advice. Stop an exercise that causes pain and consult a qualified professional when appropriate.</p></main></body></html>

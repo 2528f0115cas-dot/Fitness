@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>FitBuddy</title><link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+<header class="topbar"><a class="brand" href="/">FitBuddy</a><nav><a href="/view-all-users">Admin</a><a href="/docs">API Docs</a></nav></header>
+<main class="hero"><section class="intro"><p class="eyebrow">AI FITNESS PLAN GENERATOR</p><h1>Your week.<br><span>Built around you.</span></h1><p>Generate a personalized 7-day workout plan and a practical nutrition or recovery tip, then refine the plan with feedback.</p></section>
+<section class="card"><h2>Tell us about you</h2>{% if error %}<div class="alert">{{ error }}</div>{% endif %}
+<form method="post" action="/generate-workout" class="form-grid">
+<label>User ID<input name="user_id" placeholder="e.g. alex01" required></label>
+<label>Name<input name="name" placeholder="Your name" required></label>
+<label>Age<input type="number" name="age" min="13" max="100" required></label>
+<label>Weight (kg)<input type="number" name="weight" min="25" max="400" step="0.1" required></label>
+<label>Fitness goal<select name="goal"><option>weight loss</option><option>muscle gain</option><option>general wellness</option><option>flexibility</option><option>endurance</option></select></label>
+<label>Workout intensity<select name="intensity"><option>low</option><option selected>medium</option><option>high</option></select></label>
+<div class="full"><button type="submit">Generate my 7-day plan →</button></div>
+</form><p class="fine">Wellness guidance only. Adjust activity to your abilities and seek professional advice for medical concerns.</p></section></main>
+</body></html>
